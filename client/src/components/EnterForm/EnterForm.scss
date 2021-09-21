@@ -1,0 +1,62 @@
+@import "../../assests/styles/helpers/gue";
+@import "../../assests/styles/helpers/fonts";
+@import "../../assests/styles/helpers/gue";
+@import "../../assests/styles/helpers/mixin";
+
+.form {
+  $self: &;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  @include adaptive(40, 40, 20, padding-left);
+  @include adaptive(40, 40, 20, padding-right);
+  @include adaptive(80, 40, 20, padding-top);
+  @include adaptive(80, 40, 20, padding-bottom);
+
+  h1 {
+    @include adaptive(22, 18, 16, font-size);
+    padding-bottom: 20px;
+  }
+  &__section {
+    display: flex;
+    justify-content: center;
+    @include adaptive(120, 80, 40, padding-top);
+    @include adaptive(80, 40, 20, padding-left);
+    @include adaptive(80, 40, 20, padding-right);
+  }
+  
+  &__wrapper {
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__input {
+    width: 320px;
+    height: 60px;
+    @include adaptive(30, 30, 20, margin-bottom);
+    margin-left: auto;
+  }
+
+  &__button {
+    width: 200px;
+    height: 55px;
+    border-radius: 8px;
+    border: none;
+    background: $carrot;
+    @include adaptive(18, 16, 14, font-size);
+    color: $white;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  &__button:hover {
+    background: $carrot-hover;
+    box-shadow: 5px 5px 5px $black-background;
+  }
+
+}

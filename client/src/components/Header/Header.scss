@@ -1,25 +1,51 @@
+@import "../../assests/styles/helpers/gue";
+@import "../../assests/styles/helpers/fonts";
+@import "../../assests/styles/helpers/grid";
+@import "../../assests/styles/helpers/mixin";
+
+
 .header {
   $self: &;
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 25px;
   min-height: 120px;
 
+  &__logo {
+    list-style: none;
+    text-decoration: none;
+    a {
+      color: $black-background;
+      @include adaptive(28, 28, 18, font-size);
+      padding-left: 80px;
+      @include adaptive(40, 40, 25, padding-right);
+    }
+  }
+
   &__nav {
+    display: flex;
     width: 100%;
-    max-width: 450px;
+    max-width: 700px;
+    @include adaptive(120, 90, 25, padding-right);
+    @include adaptive(120, 90, 25, padding-left);
+    @include to(768px) {
+      justify-content: center;
+    }
   }
 
   &__menu {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 
-    li {
+    #{$self}__link {
       list-style: none;
 
       a {
         text-decoration: none;
+        color: $black-background;
+        @include adaptive(28, 28, 18, font-size);
       }
     }
   }

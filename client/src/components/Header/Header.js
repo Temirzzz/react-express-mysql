@@ -19,15 +19,18 @@ const Header = () => {
   return (
     <Router>
       <header className='header'>
+        <div className='header__logo'>
+          <Link to='/' >LOGO</Link>
+        </div>
         <nav className='header__nav'>
           <ul className='header__menu'>
-            <li>
+            <li className='header__link'>
               <Link to='/' >Home</Link>
             </li>
-            <li>
+            <li className='header__link'>
               <Link to='/about' >About</Link>
             </li>
-            <li>
+            <li className='header__link'>
               <Link to='/enter'>Enter</Link>
             </li>
           </ul>

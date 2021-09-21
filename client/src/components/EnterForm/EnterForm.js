@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import './EnterForm'
+import './EnterForm.scss'
 
 const EnterForm = () => {
   const [regName, setRegName] = useState('')
@@ -41,30 +41,36 @@ const EnterForm = () => {
   }
 
   return (
-    <div>
-      <form>
-        <input type='text' onChange={(e) => {
-          setRegName(e.target.value)
-        } } />
-        <input type='email' onChange={(e) => {
-          setRegEmail(e.target.value)
-        } } />
-        <input type='password' onChange={(e) => {
-          setRegPasswd(e.target.value)
-        } } />
-        <button onClick={ sendRegistrData }>Submit</button>
-      </form>
+    <section className='form__section'>
+      <div className='form__wrapper'>
+        <form className='form'>
+          <h1>Registration</h1>
+          <input className='form__input' placeholder='Login' type='text' onChange={(e) => {
+            setRegName(e.target.value)
+          } } />
+          <input className='form__input' placeholder='Email' type='email' onChange={(e) => {
+            setRegEmail(e.target.value)
+          } } />
+          <input className='form__input' placeholder='Password' type='password' onChange={(e) => {
+            setRegPasswd(e.target.value)
+          } } />
+          <button className='form__button' onClick={ sendRegistrData }>Submit</button>
+        </form>
 
-      <form>
-        <input type='text' onChange={(e) => {
-          setLogName(e.target.value)
-        } } />
-        <input type='password' onChange={(e) => {
-          setLogPasswd(e.target.value)
-        } } />
-        <button onClick={ sendLoginData }>Submit</button>
-      </form>
-    </div>
+        <form className='form'>
+          <h1>Login</h1>
+          <input className='form__input' placeholder='Login' type='text' onChange={(e) => {
+            setLogName(e.target.value)
+          } } />
+          <input className='form__input' placeholder='Password' type='password' onChange={(e) => {
+            setLogPasswd(e.target.value)
+          } } />
+          <button className='form__button' onClick={ sendLoginData }>Submit</button>
+        </form>
+      </div>
+
+      
+    </section>
   )
 }
 
