@@ -1,20 +1,26 @@
-import './Header.scss'
+import { useState } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom"
+import './Header.scss'
+
 import EnterForm from '../EnterForm/EnterForm'
 import About from '../About/About'
 import Home from '../Home/Home'
+import PrivatPage from '../PrivatPage/PrivatPage'
+import ProtectedRout from '../ProtectedRout/ProtectedRout'
 
 const Header = () => {
+  const token = localStorage.getItem('accsessToken')
+
   return (
     <Router>
       <header className='header'>
-        <nav>
-          <ul>
+        <nav className='header__nav'>
+          <ul className='header__menu'>
             <li>
               <Link to='/' >Home</Link>
             </li>
@@ -28,18 +34,22 @@ const Header = () => {
         </nav>
 
         <Switch>
-        <Route path='/'>
-            <Home />
-          </Route>
-          <Route path='/about'>
-            <About />
-          </Route>
-          <Route path='/enter'>
-            <EnterForm />
-          </Route>
+          <ProtectedRout path='/private' component={ PrivatPage } isAuth={ token } />
         </Switch>
 
       </header>
+
+      <div>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route path='/about'>
+          <About />
+        </Route>
+        <Route path='/enter'>
+          <EnterForm />
+        </Route>
+      </div>
     </Router>
     
   )

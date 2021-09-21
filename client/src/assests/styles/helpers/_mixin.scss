@@ -1,0 +1,90 @@
+// миксин для создания масштабируемых элементов
+// пример использования @include responsive-ratio(16,9);
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+  $padding: unquote(( $y / $x ) * 100 + '%');
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+// миксин берет на себя все хлопоты по созданию треугольников
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false) {
+  @include pseudo($pos: $position);
+  width: 0;
+  height: 0;
+  @if $round {
+    border-radius: 3px;
+  }
+  @if $direction == down {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+    margin-top: 0 - round( $size / 2.5 );
+  } @else if $direction == up {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+    margin-bottom: 0 - round( $size / 2.5 );
+  } @else if $direction == right {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    margin-right: -$size;
+  } @else if $direction == left {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    margin-left: -$size;
+  }
+}
+// миксин для пвсевдоэлементов
+@mixin pseudo-element($content: '', $display: block, $pos: absolute) {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+
+  // брейкпоинты
+  // Десктоп:  1024px - 1920px
+  // Планшет:  415px  - 1023px
+  // Мобилка:  320px  - 414px
+
+@function interpolationDescMaxWidth($pcSize, $tabletSize, $maxWidth) {
+  $pcFigmaWidth: 1600;
+  $tabletFigmaWidth: 1024;
+
+  @return calc(#{$tabletSize + px} + (( (#{$pcSize} - #{$tabletSize})/(#{$pcFigmaWidth} - #{$tabletFigmaWidth})) * (#{$maxWidth}px - #{$tabletFigmaWidth}px)) );
+}
+
+@function interpolationDesc($pcSize, $tabletSize) {
+  $pcFigmaWidth: 1600 ;
+  $tabletFigmaWidth: 1024;
+
+  @return calc(#{$tabletSize + px} + (( (#{$pcSize} - #{$tabletSize})/(#{$pcFigmaWidth} - #{$tabletFigmaWidth})) * (100vw - #{$tabletFigmaWidth}px)) );
+}
+
+@function interpolationMob($tabletSize, $mobSize) {
+  $tabletFigmaWidth: 1024;
+  $mobFigmaWidth: 320;
+
+  @return calc(#{$mobSize + px} + (( (#{$tabletSize} - #{$mobSize})/(#{$tabletFigmaWidth} - #{$mobFigmaWidth})) * (100vw - #{$mobFigmaWidth}px)) );
+}
+
+
+// universal properties
+@mixin adaptive($pcSize, $tabletSize, $mobSize, $property) {
+  @media screen and (min-width: 1920px) {
+    #{$property}: interpolationDescMaxWidth($pcSize, $tabletSize, 1920)
+  }
+    #{$property}: interpolationDesc($pcSize, $tabletSize);
+  @media screen and (max-width: 1024px) {
+    #{$property}: interpolationMob($tabletSize, $mobSize);
+  }
+}

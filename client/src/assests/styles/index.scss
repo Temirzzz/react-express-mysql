@@ -1,0 +1,92 @@
+@import "./helpers/gue";
+@import "./helpers/fonts";
+@import "./helpers/grid";
+@import "./helpers/rem";
+@import "./helpers/mixin";
+
+*, *::before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+::-ms-clear {
+  display: none;
+}
+
+html {
+  font-size: 14px;
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: $base-font;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.d-flex.justify-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.test {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  @include to-md() {
+    flex-direction: column;
+  }
+}
+
+br.to-sm {
+  @include to-md() {
+    display: none;
+  }
+}
+
+br.to-xxs {
+  @include to(320px) {
+    display: none;
+  }
+}
+
+.body-overflow {
+  overflow-y: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.top-shadow{
+  box-shadow: 0px -20px 200px 35px rgba(1, 1, 1, 0.9);
+}
+
+.hide-on-middle {
+  @include to(650px) {
+    display: none;
+  }
+}
+
+.hidden-block {
+  display: none;
+}

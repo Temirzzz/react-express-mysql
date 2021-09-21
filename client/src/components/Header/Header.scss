@@ -1,3 +1,27 @@
 .header {
-  
+  $self: &;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 25px;
+  min-height: 120px;
+
+  &__nav {
+    width: 100%;
+    max-width: 450px;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+
+    li {
+      list-style: none;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
 }
+

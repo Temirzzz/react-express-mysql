@@ -7,6 +7,7 @@ require('dotenv').config()
 const { registrValidation, loginValidation } = require('../validation')
 const bcrypt = require('bcrypt')
 const conn = mysql.createConnection(config)
+const jwt = require('jsonwebtoken')
 
 router.post('/registr', async (req, res) => {
   //validation
@@ -38,6 +39,7 @@ router.post('/login', async (req, res) => {
   //login user
   const logName = req.body.logName
   const sql = `select * from users where name =?` 
+  const isLoggedIn = false
 
   try {
     conn.query(await sql, [logName], (error, result) => {
@@ -46,10 +48,15 @@ router.post('/login', async (req, res) => {
       }
       else {
         const bcryptPasswd = result[0].password
-        console.log(req.body.logPasswd);
+        // console.log(req.body.logPasswd);
 
         if(bcrypt.compareSync(req.body.logPasswd, bcryptPasswd)) {
-          res.send('success')
+          jwt.sign({ id: result[0].password.id }, 'token', (error, token) => {
+            res.send({
+              token: token,
+              isLoggedIn: true
+            })
+          })
         }
         else {
           res.send('not allowed')

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import './EnterForm'
 
@@ -25,6 +26,14 @@ const EnterForm = () => {
     try {
       if(logName && logPasswd) {
         await axios.post('http://localhost:3500/api/user/login', { logName, logPasswd }, {})
+          .then((response) => {
+            // console.log(response.data);
+            if(response.data.isLoggedIn === true) {
+              console.log('super');
+              localStorage.setItem('accsessToken', JSON.stringify(response.data.token))
+              return <Redirect to={{ pathname: '/private' }} />
+            }
+          })
       }
     } catch (error) {
       console.log(error);
