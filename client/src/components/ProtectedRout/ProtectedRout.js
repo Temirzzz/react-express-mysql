@@ -7,7 +7,7 @@ const ProtectedRout = ({ isAuth: isAuth, component: PrivatPage, ...rest }) => {
       return <PrivatPage /> 
     } 
     else {
-      return <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+      return <Redirect to={{ pathname: '/enter', state: { from: props.location } }} />
     }
   }} />
 }

@@ -10,8 +10,9 @@ import './Header.scss'
 import EnterForm from '../EnterForm/EnterForm'
 import About from '../About/About'
 import Home from '../Home/Home'
-import PrivatPage from '../PrivatPage/PrivatPage'
 import ProtectedRout from '../ProtectedRout/ProtectedRout'
+import PrivatPage from '../PrivatPage/PrivatPage'
+
 
 const Header = () => {
   const token = localStorage.getItem('accsessToken')
@@ -36,22 +37,18 @@ const Header = () => {
           </ul>
         </nav>
 
-        <Switch>
-          <ProtectedRout path='/private' component={ PrivatPage } isAuth={ token } />
-        </Switch>
+        {/* <Switch> */}
+          {/* <ProtectedRout path='/private' component={ PrivatPage } isAuth={ token } /> */}
+        {/* </Switch> */}
 
       </header>
 
       <div>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route path='/about'>
-          <About />
-        </Route>
-        <Route path='/enter'>
-          <EnterForm />
-        </Route>
+
+        <Route exact path='/'  component={ Home } />
+        <Route exact path='/about' component={ About } />
+        <Route exact path='/enter' component={ EnterForm } />
+        <ProtectedRout exact path='/private' component={ PrivatPage } isAuth={ token } />
       </div>
     </Router>
     

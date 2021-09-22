@@ -48,7 +48,6 @@ router.post('/login', async (req, res) => {
       }
       else {
         const bcryptPasswd = result[0].password
-        // console.log(req.body.logPasswd);
 
         if(bcrypt.compareSync(req.body.logPasswd, bcryptPasswd)) {
           jwt.sign({ id: result[0].password.id }, 'token', (error, token) => {

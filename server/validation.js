@@ -4,7 +4,7 @@ const registrValidation = data => {
   const schema = joi.object({
     regName: joi.string().min(4).max(50).required(),
     regPasswd: joi.string().min(6).max(100).required(),
-    regEmail: joi.string().min(6).max(100).required()
+    regEmail: joi.string().email({ minDomainSegments: 2, tlds: { allow: false } }).min(6).max(100).required()
   })
   
   return  schema.validate(data)

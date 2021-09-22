@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router'
 import axios from 'axios'
 import './EnterForm.scss'
 
@@ -9,6 +9,8 @@ const EnterForm = () => {
   const [regPasswd, setRegPasswd] = useState('')
   const [logName, setLogName] = useState('')
   const [logPasswd, setLogPasswd] = useState('')
+  const history = useHistory()
+
 
   const sendRegistrData = async (e) => {
     e.preventDefault()
@@ -22,22 +24,26 @@ const EnterForm = () => {
   }
 
   const sendLoginData = async (e) => {
+
     e.preventDefault()
     try {
       if(logName && logPasswd) {
         await axios.post('http://localhost:3500/api/user/login', { logName, logPasswd }, {})
           .then((response) => {
-            // console.log(response.data);
             if(response.data.isLoggedIn === true) {
               console.log('super');
               localStorage.setItem('accsessToken', JSON.stringify(response.data.token))
-              return <Redirect to={{ pathname: '/private' }} />
+              history.push('/private')
             }
           })
       }
     } catch (error) {
       console.log(error);
     }
+  }
+
+  const errorLoginMessage = () => {
+
   }
 
   return (
