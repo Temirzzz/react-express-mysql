@@ -1,13 +1,12 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Link
 } from "react-router-dom"
 import './Header.scss'
-
-import EnterForm from '../EnterForm/EnterForm'
+import LoginForm from '../LoginForm/LoginForm'
+import RegistForm from '../RegistForm/RegistForm'
 import About from '../About/About'
 import Home from '../Home/Home'
 import ProtectedRout from '../ProtectedRout/ProtectedRout'
@@ -32,22 +31,17 @@ const Header = () => {
               <Link to='/about' >About</Link>
             </li>
             <li className='header__link'>
-              <Link to='/enter'>Enter</Link>
+              <Link className='header__login' to='/registr'>Registr </Link>
+              <Link className='header__registr' to='/login'>/ Login</Link>
             </li>
           </ul>
         </nav>
-
-        {/* <Switch> */}
-          {/* <ProtectedRout path='/private' component={ PrivatPage } isAuth={ token } /> */}
-        {/* </Switch> */}
-
       </header>
-
       <div>
-
         <Route exact path='/'  component={ Home } />
         <Route exact path='/about' component={ About } />
-        <Route exact path='/enter' component={ EnterForm } />
+        <Route exact path='/registr' component={ RegistForm } />
+        <Route exact path='/login' component={ LoginForm } />
         <ProtectedRout exact path='/private' component={ PrivatPage } isAuth={ token } />
       </div>
     </Router>

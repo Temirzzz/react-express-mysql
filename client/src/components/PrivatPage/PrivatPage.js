@@ -1,11 +1,11 @@
-import { withRouter, useHistory } from "react-router-dom" // gives accsess to rout
+import { withRouter, useHistory } from "react-router-dom"
 
 const PrivatPage = () => {
   const history = useHistory()
 
   const logout = () => {
     localStorage.removeItem('accsessToken')
-    history.push('/enter')
+    history.push('/login')
   }
 
   return (

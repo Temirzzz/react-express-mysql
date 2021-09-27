@@ -3,7 +3,7 @@
 @import "../../assests/styles/helpers/gue";
 @import "../../assests/styles/helpers/mixin";
 
-.form {
+.reg-form {
   $self: &;
   display: flex;
   flex-direction: column;
@@ -14,11 +14,14 @@
   @include adaptive(40, 40, 20, padding-right);
   @include adaptive(80, 40, 20, padding-top);
   @include adaptive(80, 40, 20, padding-bottom);
+  max-width: 300px;
+  margin: 0 auto;
 
   h1 {
     @include adaptive(22, 18, 16, font-size);
     padding-bottom: 20px;
   }
+  
   &__section {
     display: flex;
     justify-content: center;
@@ -29,20 +32,19 @@
   
   &__wrapper {
     display: flex;
-    // flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
   &__input {
-    width: 320px;
-    height: 60px;
+    width: 100%;
+    height: 45px;
     @include adaptive(30, 30, 20, margin-bottom);
     margin-left: auto;
+    padding-left: 10px;
   }
 
   &__button {
-    width: 200px;
     height: 55px;
     border-radius: 8px;
     border: none;
@@ -52,11 +54,24 @@
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     margin-bottom: 20px;
+    padding: 10px 20px;
+    min-width: 120px;
   }
 
   &__button:hover {
     background: $carrot-hover;
     box-shadow: 5px 5px 5px $black-background;
+  }
+
+  &__error-message {
+    font-size: 14px;
+    color: $carrot;
+    transition: all 0.8s ease-in-out;
+  }
+
+  &.active {
+    right: 0;
+    transition: all 0.5s ease-in-out;
   }
 
 }
