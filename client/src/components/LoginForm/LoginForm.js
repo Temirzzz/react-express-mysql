@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,  } from 'react'
 import { useHistory } from 'react-router'
 import axios from 'axios'
 import './LoginForm.scss'
@@ -8,15 +8,15 @@ const LoginForm = () => {
   const [logName, setLogName] = useState('')
   const [logPasswd, setLogPasswd] = useState('')
   const history = useHistory()
-
-
+  
   const sendLoginData = async (e) => {
     e.preventDefault()
 
     try {
       if(logName && logPasswd) {
-        await axios.post('http://localhost:3500/api/user/login', { logName, logPasswd }, {})
+        await axios.post('http://localhost:3500/api/user/login',{ logName, logPasswd })
           .then((response) => {
+            console.log(response);
             if(response.data.isLoggedIn === true) {
               localStorage.setItem('accsessToken', JSON.stringify(response.data.token))
               history.push('/private')
