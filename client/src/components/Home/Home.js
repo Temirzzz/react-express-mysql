@@ -44,14 +44,16 @@ const Home = () => {
   }, [fetching])
 
   return (
-    <div className='home'>
-      <div className='home__post-block'>
-        {posts.map((item) => (
-          <div key={item.id} className='home__post-block__posts' >
-            <p className='home__post-block__post-title' >{ item.title }</p>
-            <p className='home__post-block__post-body' >{ item.body }</p>
-          </div>
-        ))}
+    <div className='section'>
+      <div className='home'>
+        <div className='home__post-block'>
+          {posts.map((item) => (
+            <div key={item.id} className='home__post-block__posts' >
+              <p className='home__post-block__post-title' >{ item.title }</p>
+              <p className='home__post-block__post-body' >{ item.body }</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,8 @@
 @import "../../assests/styles/helpers/fonts";
 @import "../../assests/styles/helpers/gue";
 @import "../../assests/styles/helpers/mixin";
+@import "../../assests/styles/index.scss";
+
 
 .about {
   display: flex;
@@ -9,5 +11,4 @@
   align-items: center;
   flex-direction: column;
   @include adaptive(120, 90, 25, margin-top);
-
 }
