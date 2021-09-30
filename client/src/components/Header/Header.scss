@@ -11,18 +11,24 @@
   justify-content: space-between;
   align-items: center;
   min-height: 120px;
+  
+  &__underline {
+    width: 80%;
+    height: 2px;
+    background: $dark-grey;
+    margin: 0 auto;
+  }
 
   &__logo {
-    list-style: none;
-    text-decoration: none;
+    width: 45px;
+    margin-right: 40px;
     a {
       color: $black-background;
       @include adaptive(28, 28, 18, font-size);
       padding-left: 80px;
-      @include adaptive(40, 40, 25, padding-right);
-      @include to(320px) {
-        padding-left: 0;
-      }
+      @include adaptive(60, 60, 20, padding-right);
+      @include adaptive(60, 60, 20, padding-left);
+
     }
   }
 
@@ -30,8 +36,7 @@
     display: flex;
     width: 100%;
     max-width: 700px;
-    @include adaptive(120, 90, 25, padding-right);
-    @include adaptive(120, 90, 25, padding-left);
+    @include adaptive(60, 60, 20, padding-right);
     @include to(768px) {
       justify-content: center;
     }

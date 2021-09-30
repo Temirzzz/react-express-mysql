@@ -11,6 +11,16 @@
   align-items: center;
   flex-direction: column;
 
+  h1,p {
+    color: $black;
+  }
+  
+  h1 {
+    @include adaptive(40, 32, 25, margin-bottom);
+    @include adaptive(30, 18, 16, font-size);
+
+  }
+
   &__post-block__posts {
     display: flex;
     flex-direction: column;
@@ -23,12 +33,14 @@
   }
 
   &__post-block__post-title {
-    @include adaptive(20, 18, 16, font-size);
+    @include adaptive(22, 18, 16, font-size);
     @include adaptive(20, 20, 15, padding-bottom);
+  }
+
+  &__post-block__post-body {
+    @include adaptive(18, 18, 16, font-size);
+    @include adaptive(24, 24, 24, line-height);
   }
 }
 
-h1,p {
-  color: $black;
-}
 

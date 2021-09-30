@@ -10,5 +10,20 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @include adaptive(120, 90, 25, margin-top);
+
+  h1,p {
+    color: $black;
+  }
+  
+
+  h1 {
+    @include adaptive(40, 32, 25, margin-bottom);
+    @include adaptive(30, 18, 16, font-size);
+  }
+
+  p {
+    max-width: 780px;
+    @include adaptive(18, 18, 16, font-size);
+    @include adaptive(24, 24, 24, line-height);
+  }
 }

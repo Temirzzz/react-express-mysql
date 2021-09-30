@@ -46,6 +46,7 @@ const Home = () => {
   return (
     <div className='section'>
       <div className='home'>
+        <h1>Users Posts</h1>
         <div className='home__post-block'>
           {posts.map((item) => (
             <div key={item.id} className='home__post-block__posts' >

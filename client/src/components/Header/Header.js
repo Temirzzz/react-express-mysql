@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -11,7 +10,7 @@ import About from '../About/About'
 import Home from '../Home/Home'
 import ProtectedRout from '../ProtectedRout/ProtectedRout'
 import PrivatPage from '../PrivatPage/PrivatPage'
-
+import logo from '../../assests/images/logo.png'
 
 const Header = () => {
   const token = localStorage.getItem('accsessToken')
@@ -20,7 +19,7 @@ const Header = () => {
     <Router>
       <header className='header'>
         <div className='header__logo'>
-          <Link to='/' >LOGO</Link>
+          <Link to='/' ><img className='header__logo' src={ logo } alt='logo' /></Link>
         </div>
         <nav className='header__nav'>
           <ul className='header__menu'>
@@ -36,6 +35,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+        <div className='header__underline'></div>
       </header>
       <div>
         <Route exact path='/'  component={ Home } />
