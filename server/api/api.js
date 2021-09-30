@@ -8,6 +8,8 @@ const { registrValidation, loginValidation } = require('../validation')
 const bcrypt = require('bcrypt')
 const conn = mysql.createConnection(config)
 const jwt = require('jsonwebtoken')
+const uuid = require('uuid')
+const { mailer } = require('../service/mail-service')
 
 router.post('/registr', async (req, res) => {
   //validation
@@ -18,12 +20,22 @@ router.post('/registr', async (req, res) => {
   const regName = req.body.regName
   const regEmail = req.body.regEmail
   const regPasswd = await bcrypt.hash(req.body.regPasswd, 10)
-  const sql = `insert into users (name, email, password) values (?, ?, ?)`
+  const sqlInsert = `insert into users (name, email, password) values (?, ?, ?)`
+  const sqlTryFind = `select * from users where email =?`
+  const activationLink = uuid.v4()
 
   try {
-    conn.query(await sql, [regName, regEmail, regPasswd], (error, result) => {
-      if (error) console.log(error);
-      return false
+    conn.query( await sqlTryFind, regEmail, (error, result) => {
+      if (!result.length == 0) {
+        console.log('alredy exist');
+      }
+      else {
+        conn.query(sqlInsert, [regName, regEmail, regPasswd], (error, result) => {
+          if (error) console.log(error);
+          return false
+        })
+        mailer(regEmail, activationLink)
+      }
     })
   } catch (error) {
     res.status(400).send(error)
@@ -43,6 +55,7 @@ router.post('/login', async (req, res) => {
 
   try {
     conn.query(await sql, [logName], (error, result) => {
+      console.log(result);
       if(result.length == 0) {
         res.send('now such user');
       }
