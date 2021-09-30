@@ -20,6 +20,9 @@
       @include adaptive(28, 28, 18, font-size);
       padding-left: 80px;
       @include adaptive(40, 40, 25, padding-right);
+      @include to(320px) {
+        padding-left: 0;
+      }
     }
   }
 

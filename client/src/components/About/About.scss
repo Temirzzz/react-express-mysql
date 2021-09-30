@@ -2,3 +2,12 @@
 @import "../../assests/styles/helpers/fonts";
 @import "../../assests/styles/helpers/gue";
 @import "../../assests/styles/helpers/mixin";
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @include adaptive(120, 90, 25, margin-top);
+
+}

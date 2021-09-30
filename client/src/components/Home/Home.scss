@@ -2,3 +2,31 @@
 @import "../../assests/styles/helpers/fonts";
 @import "../../assests/styles/helpers/gue";
 @import "../../assests/styles/helpers/mixin";
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__post-block__posts {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    @include adaptive(40, 40, 25, padding-right);
+    @include adaptive(40, 40, 25, padding-left);
+    @include adaptive(40, 40, 25, padding-top);
+    @include adaptive(40, 40, 25, padding-bottom);
+    text-transform: uppercase;
+  }
+
+  &__post-block__post-title {
+    @include adaptive(20, 18, 16, font-size);
+    @include adaptive(20, 20, 15, padding-bottom);
+  }
+}
+
+h1,p {
+  color: $black;
+}
+
