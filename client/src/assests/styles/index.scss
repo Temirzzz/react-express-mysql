@@ -79,8 +79,8 @@ button {
 
 
 .section {
-  @include adaptive(60, 60, 20, padding-right);
-  @include adaptive(60, 60, 20, padding-left);
+  @include adaptive(90, 60, 20, padding-right);
+  @include adaptive(90, 60, 20, padding-left);
   @include adaptive(60, 60, 40, padding-top);
   @include adaptive(80, 80, 40, padding-bottom);
 }

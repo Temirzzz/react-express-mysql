@@ -7,8 +7,8 @@
   $self: &;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
   margin: 20px;
   @include adaptive(40, 40, 20, padding-left);
   @include adaptive(40, 40, 20, padding-right);
@@ -17,9 +17,14 @@
   max-width: 500px;
   margin: 0 auto;
 
+  h1,p {
+    color: $black;
+  }
+  
   h1 {
-    @include adaptive(22, 18, 16, font-size);
-    padding-bottom: 20px;
+    @include adaptive(40, 32, 25, margin-bottom);
+    @include adaptive(30, 18, 16, font-size);
+
   }
   
   &__section {
@@ -41,7 +46,6 @@
     height: 45px;
     @include adaptive(30, 30, 20, margin-bottom);
     margin-left: auto;
-    padding-left: 10px;
     border: none;
     border-bottom: 1px solid $black-background;
   }

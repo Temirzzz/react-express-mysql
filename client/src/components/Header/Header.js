@@ -3,6 +3,7 @@ import {
   Route,
   Link
 } from "react-router-dom"
+import { history } from 'react'
 import './Header.scss'
 import LoginForm from '../LoginForm/LoginForm'
 import RegistForm from '../RegistForm/RegistForm'
@@ -35,8 +36,9 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <div className='header__underline'></div>
       </header>
+      <div className='header__underline'></div>
+
       <div>
         <Route exact path='/'  component={ Home } />
         <Route exact path='/about' component={ About } />

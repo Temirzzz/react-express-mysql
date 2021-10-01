@@ -11,10 +11,10 @@
   justify-content: space-between;
   align-items: center;
   min-height: 120px;
+  position: sticky;
   
   &__underline {
-    width: 80%;
-    height: 2px;
+    height: 60px;
     background: $dark-grey;
     margin: 0 auto;
   }
@@ -37,6 +37,8 @@
     width: 100%;
     max-width: 700px;
     @include adaptive(60, 60, 20, padding-right);
+    @include adaptive(60, 60, 20, padding-left);
+
     @include to(768px) {
       justify-content: center;
     }
