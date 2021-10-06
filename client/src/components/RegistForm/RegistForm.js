@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import { errorMessage } from '../../helpers/helpers'
 import './RegistForm.scss'
 
 const RegistForm = () => { 
@@ -13,6 +14,10 @@ const RegistForm = () => {
     try {
       if(regName && regEmail && regPasswd) {
         await axios.post('http://localhost:3500/api/user/registr', { regName, regEmail, regPasswd }, {})
+          .then((response) => {
+            if(response.data === 'alredy exist') errorMessage(response.data)
+            console.log(response);
+          })
       }
     } catch (error) {
       console.log(error);
@@ -21,7 +26,7 @@ const RegistForm = () => {
 
   return (
 
-    <form className='reg-form'>
+    <form className='form reg-form'>
       <h1>Registration</h1>
       <input className='reg-form__input' placeholder='Login' type='text' onChange={(e) => {
         setRegName(e.target.value)

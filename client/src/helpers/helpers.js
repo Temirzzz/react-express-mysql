@@ -1,6 +1,6 @@
 const errorMessage = (data) => {
   const errorData = data
-  const loginForm = document.querySelector('.login-form')
+  const loginForm = document.querySelector('.form')
   const errorBlock = document.createElement('p')
   errorBlock.classList.add('login-form__error-message')
   errorBlock.append(errorData)

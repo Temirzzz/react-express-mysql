@@ -27,7 +27,9 @@ router.post('/registr', async (req, res) => {
   try {
     conn.query( await sqlTryFind, regEmail, (error, result) => {
       if (!result.length == 0) {
-        console.log('alredy exist');
+        // console.log('alredy exist');
+        res.send('alredy exist')
+
       }
       else {
         conn.query(sqlInsert, [regName, regEmail, regPasswd], (error, result) => {
@@ -57,7 +59,7 @@ router.post('/login', async (req, res) => {
     conn.query(await sql, [logName], (error, result) => {
       console.log(result);
       if(result.length == 0) {
-        res.send('now such user');
+        res.send('now such user')
       }
       else {
         const bcryptPasswd = result[0].password

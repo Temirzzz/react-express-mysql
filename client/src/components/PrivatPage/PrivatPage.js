@@ -11,23 +11,31 @@ const PrivatPage = () => {
    
 
   const logout = () => {
+    localStorage.removeItem('accsessToken')
     history.push('/login')
   }
+
+  const submitMessage = () => {
+    console.log(111);
+    console.log(messages);
+  } 
    
-    return (
-        <div className='section'>
-            <button onClick={ logout }>logout</button>
+  return (
+    <div className='section'>
+      <button onClick={ logout }>logout</button>
 
-            <div className='private-page'>
-                <h1>Privat page</h1>
+      <div className='private-page'>
+        <h1>Privat page</h1>
 
-                <div className="private-page__form">
-                    <input className='private-page__input' type='text' placeholder='Your message' />
-                    <button className='private-page__button'>Submit</button>
-                </div>
-            </div>
+        <div className="private-page__form">
+          <input className='private-page__input' type='text' placeholder='Your message' onChange={ (e) => {
+            setMessages(e.target.value)
+          } } />
+          <button className='private-page__button' onClick={ submitMessage }>Submit</button>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
 
      

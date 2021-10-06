@@ -34,7 +34,7 @@ const LoginForm = () => {
 
   return (
 
-    <form className='login-form'>
+    <form className='form login-form'>
       <h1>Login</h1>
       <input className='login-form__input' placeholder='Login' type='text' onChange={(e) => {
         setLogName(e.target.value)

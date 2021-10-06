@@ -4,8 +4,8 @@ const mailer = async (to, link) => {
   var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: '',
-        pass: ''
+      user: '',
+      pass: ''
     }
   });
 
