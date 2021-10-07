@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { errorMessage } from '../../helpers/helpers'
+import { errorMessage } from '../../helpers/erroeMessage'
 import './RegistForm.scss'
 
 const RegistForm = () => { 

@@ -3,7 +3,6 @@ import {
   Route,
   Link
 } from "react-router-dom"
-import { history } from 'react'
 import './Header.scss'
 import LoginForm from '../LoginForm/LoginForm'
 import RegistForm from '../RegistForm/RegistForm'

@@ -10,14 +10,16 @@ const Home = () => {
   const [totalCount, setTotalCount] = useState(0)
 
 
+  console.log(posts);
   const getPost = () => {
     if(fetching) {
       // console.log('загрузка ' + result.data);
-      axios.get(`https://jsonplaceholder.typicode.com/posts?_limit=20&_page=${currentPage}`)
+      axios.get(`http://localhost:3500/api/user/posts?_limit=10&_page=${currentPage}`)
       .then((result) => {
         setPosts([...posts, ...result.data])
         setCurrentPage(prevState => prevState + 1)
         setTotalCount(result.headers['x-total-count'])
+        console.log(posts);
       })
       .finally(() => setFetching(false))
     }
@@ -51,7 +53,8 @@ const Home = () => {
           {posts.map((item) => (
             <div key={item.id} className='home__post-block__posts' >
               <p className='home__post-block__post-title' >{ item.title }</p>
-              <p className='home__post-block__post-body' >{ item.body }</p>
+              <p className='home__post-block__post-body' >{ item.post }</p>
+              <p className='home__post-block__post-body' >{ item.date }</p>
             </div>
           ))}
         </div>

@@ -2,7 +2,7 @@ import { useState,  } from 'react'
 import { useHistory } from 'react-router'
 import axios from 'axios'
 import './LoginForm.scss'
-import { errorMessage } from '../../helpers/helpers'
+import { errorMessage } from '../../helpers/erroeMessage'
 
 const LoginForm = () => {
   const [logName, setLogName] = useState('')

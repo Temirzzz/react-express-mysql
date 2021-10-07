@@ -4,7 +4,7 @@ const config = require('../config/config')
 const router = express.Router()
 const mysql = require('mysql2');
 require('dotenv').config()
-const { registrValidation, loginValidation } = require('../validation')
+const { registrValidation, loginValidation, postsValidation } = require('../validation')
 const bcrypt = require('bcrypt')
 const conn = mysql.createConnection(config)
 const jwt = require('jsonwebtoken')
@@ -82,7 +82,44 @@ router.post('/login', async (req, res) => {
   }
 })
 
+router.get('/posts', async (req, res) => {
+  const sql = `select * from posts` 
 
+  try {
+    conn.query( await sql, (error, result) => {
+      if(result.length == 0) {
+        return
+      }
+      else {
+        res.send(result)
+      }
+    })
+  } catch (error) {
+    console.log(error);
+  }
+})
+
+
+
+router.post('/posts', async (req, res) => {
+  // validation
+  const { error } = postsValidation(req.body)
+  if(error) return res.status(400).send(error.details[0].message)
+
+  const posts = req.body.posts
+  const title = req.body.title
+
+  const sqlPosts = `insert into posts (title, post) values (?, ?)`
+
+  try {
+    conn.query(await sqlPosts, [title, posts], (error, result) => {
+      if(error) throw error
+      return
+    })
+  } catch (error) {
+    res.status(400).send(error) 
+  }
+})
 
 
 module.exports = router

@@ -19,5 +19,16 @@ const loginValidation = data => {
   return  schema.validate(data)
 }
 
+const postsValidation = data => {
+  const schema = joi.object({
+    title: joi.string().min(4).max(50).required(),
+    posts: joi.string().min(6).max(1500).required()
+  })
+  
+  return  schema.validate(data)
+}
+
 module.exports.registrValidation = registrValidation
 module.exports.loginValidation = loginValidation
+module.exports.postsValidation = postsValidation
+
