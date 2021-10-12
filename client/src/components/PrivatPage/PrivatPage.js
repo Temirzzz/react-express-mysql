@@ -1,15 +1,12 @@
-import { withRouter, useHistory } from "react-router-dom"
-import React, { useState, useContext } from 'react';
+import { withRouter, useHistory } from 'react-router-dom'
+import React, { useState } from 'react'
 import axios from 'axios'
 import './PrivatPage.scss'
 
 const PrivatPage = () => {
   const history = useHistory()
-  const [posts, setPosts] = useState([]);
-  const [title, setTitle] = useState([]);
-
-  console.log(posts);
-  console.log(title);
+  const [posts, setPosts] = useState([])
+  const [title, setTitle] = useState([])
 
 
   const logout = () => {
@@ -34,7 +31,7 @@ const PrivatPage = () => {
    
   return (
     <div className='section'>
-      <button onClick={ logout }>logout</button>
+      <button className='private-page__button' onClick={ logout }>logout</button>
 
       <div className='private-page'>
         <h1>Privat page</h1>
@@ -46,7 +43,11 @@ const PrivatPage = () => {
           <input className='private-page__input' type='text' placeholder='Your message' onChange={ (e) => {
             setPosts(e.target.value)
           } } />
-          <button className='private-page__button' onClick={ submitPost }>Submit</button>
+          <div className='private-page__button-wrapper'> 
+            <button className='private-page__button' onClick={ submitPost }>Submit</button>
+            <button className='private-page__button' >Edit</button>
+          </div>
+
         </div>
       </div>
     </div>

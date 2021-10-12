@@ -94,3 +94,11 @@ button {
 .hidden-block {
   display: none;
 }
+
+
+.error-message {
+  text-transform: capitalize;
+  font-size: 14px;
+  color: $carrot;
+  transition: all 0.8s ease-in-out;
+}

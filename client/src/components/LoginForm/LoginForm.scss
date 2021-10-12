@@ -7,8 +7,6 @@
   $self: &;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
   margin: 20px;
   @include adaptive(40, 40, 20, padding-left);
   @include adaptive(40, 40, 20, padding-right);
@@ -23,8 +21,7 @@
   
   h1 {
     @include adaptive(40, 32, 25, margin-bottom);
-    @include adaptive(30, 18, 16, font-size);
-
+    @include adaptive(46, 40, 24, font-size);
   }
 
   &__section {
@@ -56,24 +53,19 @@
     border: none;
     background: $carrot;
     @include adaptive(18, 16, 14, font-size);
+    @include adaptive(240, 220, 200, width);
+    @include adaptive(45, 45, 40, height);
     color: $white;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     margin-bottom: 20px;
-    padding: 10px 20px;
-    min-width: 220px;
+    margin: 0 auto;
+    margin-bottom: 20px;
   }
 
   &__button:hover {
     background: $carrot-hover;
     box-shadow: 5px 5px 5px $black-background;
-  }
-
-  &__error-message {
-    text-transform: capitalize;
-    font-size: 14px;
-    color: $carrot;
-    transition: all 0.8s ease-in-out;
   }
 
   &.active {

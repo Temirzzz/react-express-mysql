@@ -9,7 +9,6 @@ const bcrypt = require('bcrypt')
 const conn = mysql.createConnection(config)
 const jwt = require('jsonwebtoken')
 const uuid = require('uuid')
-const { mailer } = require('../service/mail-service')
 
 router.post('/registr', async (req, res) => {
   //validation
@@ -36,7 +35,6 @@ router.post('/registr', async (req, res) => {
           if (error) console.log(error);
           return false
         })
-        mailer(regEmail, activationLink)
       }
     })
   } catch (error) {
@@ -65,7 +63,7 @@ router.post('/login', async (req, res) => {
         const bcryptPasswd = result[0].password
 
         if(bcrypt.compareSync(req.body.logPasswd, bcryptPasswd)) {
-          jwt.sign({ id: result[0].password.id }, 'token', (error, token) => {
+          jwt.sign({ result }, process.env.JWT_TOKEN, { expiresIn: '30s' },  (error, token) => {
             res.send({
               token: token,
               isLoggedIn: true

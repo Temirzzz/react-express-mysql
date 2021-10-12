@@ -16,14 +16,12 @@ const LoginForm = () => {
       if(logName && logPasswd) {
         await axios.post('http://localhost:3500/api/user/login',{ logName, logPasswd })
           .then((response) => {
-            console.log(response);
             if(response.data.isLoggedIn === true) {
               localStorage.setItem('accsessToken', JSON.stringify(response.data.token))
               history.push('/private')
             }
             else {
               errorMessage(response.data)
-              console.log(response.data);
             }
           })
       }

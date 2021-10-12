@@ -13,8 +13,7 @@ const Home = () => {
   console.log(posts);
   const getPost = () => {
     if(fetching) {
-      // console.log('загрузка ' + result.data);
-      axios.get(`http://localhost:3500/api/user/posts?_limit=10&_page=${currentPage}`)
+      axios.get(`http://localhost:3500/api/user/posts?_limit=20&_page=${currentPage}`)
       .then((result) => {
         setPosts([...posts, ...result.data])
         setCurrentPage(prevState => prevState + 1)
