@@ -5,44 +5,17 @@ import './Home.scss'
 
 const Home = () => {
   const [posts, setPosts] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
-  const [fetching, setFetching] = useState(true)
-  const [totalCount, setTotalCount] = useState(0)
 
 
-  console.log(posts);
-  const getPost = () => {
-    if(fetching) {
-      axios.get(`http://localhost:3500/api/user/posts?_limit=20&_page=${currentPage}`)
-      .then((result) => {
-        setPosts([...posts, ...result.data])
-        setCurrentPage(prevState => prevState + 1)
-        setTotalCount(result.headers['x-total-count'])
-        console.log(posts);
-      })
-      .finally(() => setFetching(false))
-    }
+  const getPost = async () => {
+    const res = await axios.get(`http://localhost:3500/api/user/posts`)
+    setPosts(res.data)
   }
 
-  const scrollHandler = (e) => {
-    if(e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && posts.length < totalCount) {
-      setFetching(true)
-    }
-  }
-
-
-  const lazyLoad = () => {
-    document.addEventListener('scroll', scrollHandler)
-
-    return function() {
-      document.removeEventListener('scroll', scrollHandler)
-    }
-  }
 
   useEffect(() => {
     getPost()
-    lazyLoad()
-  }, [fetching])
+  }, [])
 
   return (
     <div className='section'>

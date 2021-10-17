@@ -26,9 +26,7 @@ router.post('/registr', async (req, res) => {
   try {
     conn.query( await sqlTryFind, regEmail, (error, result) => {
       if (!result.length == 0) {
-        // console.log('alredy exist');
         res.send('alredy exist')
-
       }
       else {
         conn.query(sqlInsert, [regName, regEmail, regPasswd], (error, result) => {

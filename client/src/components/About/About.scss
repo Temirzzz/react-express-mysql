@@ -18,7 +18,7 @@
 
   h1 {
     @include adaptive(40, 32, 25, margin-bottom);
-    @include adaptive(30, 18, 16, font-size);
+    @include adaptive(46, 40, 24, font-size);
   }
 
   p {

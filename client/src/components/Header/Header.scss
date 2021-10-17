@@ -55,12 +55,9 @@
       a {
         text-decoration: none;
         color: $black-background;
-        @include adaptive(28, 28, 18, font-size);
+        @include adaptive(24, 24, 18, font-size);
       }
     }
   }
-
-
- 
 }
 
