@@ -19,7 +19,10 @@ const Header = () => {
     <Router>
       <header className='header'>
         <div className='header__logo'>
-          <Link to='/' ><img className='header__logo' src={ logo } alt='logo' /></Link>
+          <Link to='/' >
+            <img className='header__logo' src={ logo } alt='logo' /> 
+            <p>Silly app</p>
+          </Link>
         </div>
         <nav className='header__nav'>
           <ul className='header__menu'>

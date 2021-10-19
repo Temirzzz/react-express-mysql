@@ -32,26 +32,21 @@ const Chat = ({ socket, room, username }) => {
     <div className='section'>
       <div className='chat'>
         <h3>Live chat</h3>
-         
-         <div>
-
-         </div>
-         <input className='' onChange={ event => { setCurrentMessage(event.target.value) } } />
-         <button className='' onClick={ sendMessage }>Send</button>
+         <input className='chat__input' onChange={ event => { setCurrentMessage(event.target.value) } } />
+         <button className='chat__button' onClick={ sendMessage }>Send</button>
       </div>
-      <div>
+      <div className=''>
           {messageList.map(messageContent => {
             return <div className='chat__message' id={ username === messageContent.author ? 'you' : 'other' }>
-              <p>
+              <h2 className='chat__message-author'>
                 { messageContent.author }
-              </p>
-              <div>
+              </h2>
+              <p className='chat__message-message'>
                 { messageContent.message }
-              </div>
-              <p>
-                { messageContent.time }
               </p>
-
+              <span className='chat__message-time'>
+                { messageContent.time }
+              </span>
             </div>
           })}
          </div>

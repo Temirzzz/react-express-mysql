@@ -1,7 +1,71 @@
-#you {
-  background: red;
+@import "../../assests/styles/helpers/gue";
+@import "../../assests/styles/helpers/fonts";
+@import "../../assests/styles/helpers/gue";
+@import "../../assests/styles/helpers/mixin";
+@import "../../assests/styles/index.scss";
+
+
+
+
+#you,
+#other {
+  padding: 10px 15px;
+  border-radius: 15px;
+  background: $chat-font-first;
+  color: $white;
 }
 
 #other {
-  background: blue;
+  background: $chat-font-second;
+}
+
+.chat {
+  $self: &;
+
+  &__input {
+    width: 100%;
+    height: 45px;
+    @include adaptive(30, 30, 20, margin-bottom);
+    margin-left: auto;
+    border: none;
+    border-bottom: 1px solid $black-background;
+    margin-bottom: 20px;
+  }
+
+  &__button {
+    height: 55px;
+    border-radius: 8px;
+    border: none;
+    background: $carrot;
+    @include adaptive(18, 16, 14, font-size);
+    @include adaptive(240, 220, 200, width);
+    @include adaptive(45, 45, 40, height);
+    color: $white;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin: 0 5px;
+    margin-bottom: 40px;
+  }
+
+  &__message {
+    margin-bottom: 15px;
+  }
+
+  &__message-author {
+    color: $white;
+    margin-bottom: 10px;
+  }
+
+  &__message-message {
+    color: $white;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  &__message-time {
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+  }
 }
