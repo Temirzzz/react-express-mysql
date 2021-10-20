@@ -38,10 +38,8 @@ a {
   text-decoration: none;
 }
 
-.d-flex.justify-space-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+h1, p {
+  color: $DimGrey;
 }
 
 

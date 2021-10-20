@@ -15,10 +15,6 @@
   max-width: 500px;
   margin: 0 auto;
 
-  h1,p {
-    color: $black;
-  }
-  
   h1 {
     @include adaptive(40, 32, 25, margin-bottom);
     @include adaptive(46, 40, 24, font-size);
@@ -45,6 +41,8 @@
     margin-left: auto;
     border: none;
     border-bottom: 1px solid $black-background;
+    cursor: grabbing;
+    background: none;
   }
 
   &__button {
@@ -61,11 +59,16 @@
     margin-bottom: 20px;
     margin: 0 auto;
     margin-bottom: 20px;
+    font-weight: 600;
   }
 
   &__button:hover {
     background: $carrot-hover;
     box-shadow: 5px 5px 5px $black-background;
+    span {
+      background: none;
+      text-shadow: 5px 5px 5px $black-background;
+    }
   }
 
   &__error-message {

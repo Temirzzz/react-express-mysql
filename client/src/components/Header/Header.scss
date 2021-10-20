@@ -12,6 +12,7 @@
   align-items: center;
   min-height: 120px;
   position: sticky;
+  padding: 20px 0;
   
   &__underline {
     height: 60px;
@@ -20,15 +21,20 @@
   }
 
   &__logo {
-    width: 45px;
+    display: flex;
     margin-right: 40px;
+    margin-bottom: 13px;
+    font-weight: 600;
     a {
-      color: $black-background;
+      color: $DimGrey;
       @include adaptive(28, 28, 18, font-size);
       padding-left: 80px;
       @include adaptive(60, 60, 20, padding-right);
       @include adaptive(60, 60, 20, padding-left);
+    }
 
+    img {
+      width: 45px;
     }
   }
 
@@ -44,6 +50,10 @@
     }
   }
 
+  &__menu-inner {
+    display: flex;
+  }
+
   &__menu {
     display: flex;
     justify-content: space-between;
@@ -51,12 +61,24 @@
 
     #{$self}__link {
       list-style: none;
+      font-weight: 600;
 
       a {
         text-decoration: none;
-        color: $black-background;
+        color: $DimGrey;
         @include adaptive(24, 24, 18, font-size);
       }
+    }
+  }
+
+  &__menu-inner__vertical-line {
+    height: 2px;
+    width: 32px;
+    background: $DimGrey;
+    transform: rotate(90deg);
+    margin-top: 10px;
+    @include to(430px) {
+      width: 20px;
     }
   }
 }

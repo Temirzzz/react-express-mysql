@@ -11,22 +11,33 @@
   align-items: center;
   flex-direction: column;
 
-  h1,p {
-    color: $black;
+  p {
+    word-wrap: break-word;
   }
-  
+
   h1 {
     @include adaptive(40, 32, 25, margin-bottom);
     @include adaptive(46, 40, 24, font-size);
   }
 
+  &__post-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__post-block__posts {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     max-width: 500px;
     @include adaptive(40, 40, 25, padding-top);
     @include adaptive(40, 40, 25, padding-bottom);
     text-transform: uppercase;
+    @include to(768px) {
+      max-width: 300px;
+    }
   }
 
   &__post-block__post-title {
@@ -37,6 +48,13 @@
   &__post-block__post-body {
     @include adaptive(18, 18, 16, font-size);
     @include adaptive(24, 24, 24, line-height);
+  }
+
+  &__post-block__posts {
+    padding: 20px 25px;
+    border-radius: 35px;
+    background: $LightSkyBlue-background;
+    margin-bottom: 20px;
   }
 }
 

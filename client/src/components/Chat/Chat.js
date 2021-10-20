@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import socket from '../../helpers/socket'
 import './Chat.scss'
 
 

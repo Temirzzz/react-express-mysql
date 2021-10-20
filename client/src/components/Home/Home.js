@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import './Home.scss'
+import { motion } from 'framer-motion'
 
 const Home = () => {
   const [posts, setPosts] = useState([])
@@ -23,11 +24,13 @@ const Home = () => {
         <h1>Users Posts</h1>
         <div className='home__post-block'>
           {posts.map((item) => (
-            <div key={item.id} className='home__post-block__posts' >
+            <motion.div key={item.id} className='home__post-block__posts' 
+              whileHover={{ scale: 1.2 }}
+            >
               <p className='home__post-block__post-title' >{ item.title }</p>
               <p className='home__post-block__post-body' >{ item.post }</p>
               <p className='home__post-block__post-body' >{ item.date }</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

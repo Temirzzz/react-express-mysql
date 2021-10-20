@@ -11,6 +11,7 @@ import Home from '../Home/Home'
 import ProtectedRout from '../ProtectedRout/ProtectedRout'
 import PrivatPage from '../PrivatPage/PrivatPage'
 import logo from '../../assests/images/logo.png'
+import { motion } from "framer-motion"
 
 const Header = () => {
   const token = localStorage.getItem('accsessToken')
@@ -18,24 +19,60 @@ const Header = () => {
   return (
     <Router>
       <header className='header'>
-        <div className='header__logo'>
+        <motion.div className='header__logo' 
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2 }}
+        >
           <Link to='/' >
             <img className='header__logo' src={ logo } alt='logo' /> 
             <p>Silly app</p>
           </Link>
-        </div>
+        </motion.div>
         <nav className='header__nav'>
           <ul className='header__menu'>
-            <li className='header__link'>
+            <motion.li className='header__link'
+              whileHover={{
+                scale: 1.2,
+                transition: { duration: 1 },
+              }}
+              whileTap={{ scale: 3 }}
+            >
               <Link to='/' >Home</Link>
-            </li>
-            <li className='header__link'>
+            </motion.li>
+            <motion.li className='header__link'
+              whileHover={{
+                scale: 1.2,
+                transition: { duration: 1 },
+              }}
+              whileTap={{ scale: 3 }}
+            >
               <Link to='/about' >About</Link>
-            </li>
-            <li className='header__link'>
-              <Link className='header__login' to='/registr'>Registr </Link>
-              <Link className='header__registr' to='/login'>/ Login</Link>
-            </li>
+            </motion.li>
+
+          <ul className='header__menu-inner'>
+            <motion.li className='header__link'
+              whileHover={{
+                scale: 1.2,
+                transition: { duration: 1 },
+              }}
+              whileTap={{ scale: 3 }}
+            >
+              <Link className='header__login' to='/registr'>Registr</Link>
+            </motion.li>
+
+            <div className='header__menu-inner__vertical-line'></div>
+            
+            <motion.li className='header__link'
+              whileHover={{
+                scale: 1.2,
+                transition: { duration: 1 },
+              }}
+              whileTap={{ scale: 3 }}
+            >
+              <Link className='header__registr' to='/login'>Login</Link>
+            </motion.li>
+          </ul>
+
           </ul>
         </nav>
       </header>

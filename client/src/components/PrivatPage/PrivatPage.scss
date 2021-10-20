@@ -10,10 +10,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  h1 {
-    color: $black;
-  }
   
   h1 {
     @include adaptive(40, 32, 25, margin-bottom);

@@ -3,6 +3,8 @@ import { useHistory } from 'react-router'
 import axios from 'axios'
 import './LoginForm.scss'
 import { errorMessage } from '../../helpers/erroeMessage'
+import { motion } from 'framer-motion'
+
 
 const LoginForm = () => {
   const [logName, setLogName] = useState('')
@@ -34,13 +36,23 @@ const LoginForm = () => {
 
     <form className='form login-form'>
       <h1>Login</h1>
-      <input className='login-form__input' placeholder='Login' type='text' onChange={(e) => {
+      <motion.input className='login-form__input' placeholder='Login' type='text' onChange={(e) => {
         setLogName(e.target.value)
-      } } />
-      <input className='login-form__input' placeholder='Password' type='password' onChange={(e) => {
+      } } drag />
+      <motion.input className='login-form__input' placeholder='Password' type='password' onChange={(e) => {
         setLogPasswd(e.target.value)
-      } } />
-      <button className='login-form__button' onClick={ sendLoginData }>Submit</button>
+      } } drag  />
+      <motion.button className='login-form__button' onClick={ sendLoginData }
+        whileHover={{
+          scale: 1.2,
+          transition: { duration: 1 },
+        }}
+      ><motion.span
+        whileHover={{
+          scale: 1.2,
+          transition: { duration: 1 },
+        }}
+      >Submit</motion.span></motion.button>
     </form>
      
   )
