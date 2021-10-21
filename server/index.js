@@ -1,4 +1,5 @@
 const api = require('./api/api.js')
+const adminApi = require('./api/adminApi.js')
 const express = require('express')
 const app = express()
 const socketServer = require('http').createServer(app)
@@ -20,6 +21,8 @@ app.use(cors({
 }))
 
 app.use('/api/user', api)
+app.use('/api/admin', adminApi)
+
 
 io.on('connection', socket => {
   console.log(`User connected ${socket.id}`)
