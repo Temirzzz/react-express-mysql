@@ -1,22 +1,11 @@
 
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useContext } from 'react'
 import './Home.scss'
 import { motion } from 'framer-motion'
+import { postsContext } from '../../helpers/context'
 
 const Home = () => {
-  const [posts, setPosts] = useState([])
-
-
-  const getPost = async () => {
-    const res = await axios.get(`http://localhost:3500/api/user/posts`)
-    setPosts(res.data)
-  }
-
-
-  useEffect(() => {
-    getPost()
-  }, [])
+  const {posts, setPosts} = useContext(postsContext)
 
   return (
     <div className='section'>
@@ -32,6 +21,7 @@ const Home = () => {
               <p className='home__post-block__post-body' >{ item.date }</p>
             </motion.div>
           ))}
+
         </div>
       </div>
     </div>

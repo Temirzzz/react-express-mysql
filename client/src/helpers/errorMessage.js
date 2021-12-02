@@ -6,7 +6,7 @@ const errorMessage = (data) => {
   errorBlock.append(errorData)
   loginForm.append(errorBlock)
 
-  console.log(loginForm);
+  console.log(loginForm)
   setTimeout(() => {
     errorBlock.remove()
   }, 3000)

@@ -2,13 +2,13 @@ const express = require('express')
 const app = express()
 const config = require('../config/config')
 const router = express.Router()
-const mysql = require('mysql2');
+const mysql = require('mysql2')
 require('dotenv').config()
 const { registrValidation, loginValidation, postsValidation } = require('../validation')
 const bcrypt = require('bcrypt')
 const conn = mysql.createConnection(config)
 const jwt = require('jsonwebtoken')
-const uuid = require('uuid')
+
 
 router.post('/registr', async (req, res) => {
   //validation
@@ -30,7 +30,7 @@ router.post('/registr', async (req, res) => {
       }
       else {
         conn.query(sqlInsert, [regName, regEmail, regPasswd], (error, result) => {
-          if (error) console.log(error);
+          if (error) console.log(error)
           return false
         })
       }
@@ -91,7 +91,7 @@ router.get('/posts', async (req, res) => {
       }
     })
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 })
 

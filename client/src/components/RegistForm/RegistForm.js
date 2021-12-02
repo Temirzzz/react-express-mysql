@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { errorMessage } from '../../helpers/erroeMessage'
+import { errorMessage } from '../../helpers/errorMessage'
 import './RegistForm.scss'
-import { motion } from 'framer-motion'
 
 const RegistForm = () => { 
   const [regName, setRegName] = useState('')
@@ -26,29 +25,18 @@ const RegistForm = () => {
   }
 
   return (
-
     <form className='form reg-form'>
       <h1>Registration</h1>
-      <motion.input className='reg-form__input' placeholder='Login' type='text' onChange={(e) => {
+      <input className='reg-form__input' placeholder='Login' type='text' onChange={(e) => {
         setRegName(e.target.value)
-      } } drag />
-      <motion.input className='reg-form__input' placeholder='Email' type='email' onChange={(e) => {
+      } } />
+      <input className='reg-form__input' placeholder='Email' type='email' onChange={(e) => {
         setRegEmail(e.target.value)
-      } } drag />
-      <motion.input className='reg-form__input' placeholder='Password' type='password' onChange={(e) => {
+      } } />
+      <input className='reg-form__input' placeholder='Password' type='password' onChange={(e) => {
         setRegPasswd(e.target.value)
-      } } drag />
-      <motion.button className='reg-form__button' onClick={ sendRegistrData }
-        whileHover={{
-          scale: 1.2,
-          transition: { duration: 1 },
-        }}
-      ><motion.span
-        whileHover={{
-          scale: 1.2,
-          transition: { duration: 1 },
-        }}
-      >Submit</motion.span></motion.button>
+      } } />
+      <button className='reg-form__button' onClick={ sendRegistrData } ><span>Submit</span></button>
     </form>
   )
 

@@ -48,6 +48,13 @@
     @include to(768px) {
       justify-content: center;
     }
+
+    a {
+      text-decoration: none;
+      color: $DimGrey;
+      @include adaptive(24, 24, 18, font-size);
+    }
+    
   }
 
   &__menu-inner {
@@ -58,17 +65,6 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-
-    #{$self}__link {
-      list-style: none;
-      font-weight: 600;
-
-      a {
-        text-decoration: none;
-        color: $DimGrey;
-        @include adaptive(24, 24, 18, font-size);
-      }
-    }
   }
 
   &__menu-inner__vertical-line {
