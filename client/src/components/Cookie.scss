@@ -1,0 +1,51 @@
+@import "../assests/styles/helpers/gue";
+@import "../assests/styles/helpers/fonts";
+@import "../assests/styles/helpers/gue";
+@import "../assests/styles/helpers/mixin";
+@import "../assests/styles/index.scss";
+
+.cookie {
+  position: fixed;
+  max-width: 560px;
+  padding: 20px 60px;
+  z-index: 999;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -10px);
+  background: #fff;
+  border-radius: 6px;
+  color: $black;
+  box-shadow: 3px 3px 9px -1px rgba(0, 0, 0, 0.2);
+  
+  h1 {
+    margin-bottom: 24px;
+  }
+
+  p {
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  a {
+    color: $carrot;
+    text-decoration: none;
+  }
+
+  button {
+    height: 55px;
+    border-radius: 8px;
+    border: none;
+    background: $carrot;
+    @include adaptive(18, 16, 14, font-size);
+    @include adaptive(240, 220, 200, width);
+    @include adaptive(45, 45, 40, height);
+    color: $white;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+}
