@@ -13,9 +13,9 @@ function App() {
 
   useEffect(() => {
     setShowCookie(localStorage.getItem('cookie') !== 'true')
-
+    setShowCookie(localStorage.getItem('cookie') !== 'true')
+    console.log(showCookie);
   }, [])
-
 
   return (
     <div className="App">

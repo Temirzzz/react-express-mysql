@@ -4,14 +4,12 @@ import './Cookie.scss'
 
 function Cookie(prop) {
 
-  const acceptCookie = (e) => {
+  const acceptCookie = () => {
     localStorage.setItem('cookie', true)
     if(prop.hideCookie) {
       prop.hideCookie()
     }
   }
-
-
 
   return (
     <Router>
